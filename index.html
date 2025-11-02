@@ -69,6 +69,14 @@
       .hero-left h1{font-size:28px}
       .hero-right img{height:220px}
     }
+    /* Centralizar títulos das categorias de fotos e vídeos */
+#portfolio h3 {
+  text-align: center;   /* Centraliza o texto */
+  margin-top: 40px;     /* Espaço acima do título */
+  font-size: 20px;      /* Ajuste de tamanho */
+  font-weight: 600;     /* Leve negrito */
+}
+
   </style>
 </head>
 <body>
@@ -112,76 +120,59 @@
     </section>
 
     <section id="portfolio">
-      <h2>Portfólio</h2>
-      <div class="filters">
-        <button class="active" data-filter="all">Todos</button>
-        <button data-filter="casamento">Casamento</button>
-        <button data-filter="retrato">Retrato</button>
-        <button data-filter="natureza">Natureza</button>
-        <button data-filter="video">Vídeos</button>
-      </div>
+  <h2>Portfólio</h2>
 
-      <div class="subfilters" style="display:none;"></div>
+  <!-- Categorias de Fotografias -->
+  <h3>📸 CATEGORIAS DE FOTOGRAFIA</h3>
+  <div class="filters" id="photo-filters">
+    <button class="active" data-filter="all-photos">Todos</button>
+    <button data-filter="Studio">Studio</button>
+    <button data-filter="retrato">Retrato</button>
+    <button data-filter="natureza">Natureza</button>
+  </div>
+  <div class="subfilters" style="display:none;" id="photo-subfilters"></div>
+  <div class="grid" id="photo-gallery">
+    <!-- Fotos -->
+    <div class="card" data-category="Studio" data-subcategory="Studio">
+      <img src="https://i.ibb.co/rRwhhT1g/Adalberto-Banner.png">
+      <div class="tag">Cerimônia</div>
+    </div>
+    <div class="card" data-category="retrato" data-subcategory="ensaios">
+      <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop">
+      <div class="tag">Ensaios</div>
+    </div>
+    <div class="card" data-category="natureza" data-subcategory="festa">
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop">
+      <div class="tag">Festa</div>
+    </div>
+  </div>
 
-      <div class="grid" id="gallery">
-        <!-- Casamento -->
-        <div class="card" data-category="casamento" data-subcategory="cerimonia">
-          <img src="https://i.ibb.co/rRwhhT1g/Adalberto-Banner.png">
-          <div class="tag">Cerimônia</div>
-        </div>
-        <div class="card" data-category="casamento" data-subcategory="festa">
-          <img src="https://images.unsplash.com/photo-1517849845537-be9c29b29330?q=80&w=1200&auto=format&fit=crop">
-          <div class="tag">Festa</div>
-        </div>
-        <div class="card" data-category="casamento" data-subcategory="ensaios">
-          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop">
-          <div class="tag">Ensaios</div>
-        </div>
+  <!-- Categorias de Vídeos -->
+  <h3>🎬 CATEGORIAS DE VÍDEO</h3>
+  <div class="filters" id="video-filters">
+    <button class="active" data-filter="all-videos">Todos</button>
+    <button data-filter="curtos">Curtos</button>
+    <button data-filter="promocao">Promoção</button>
+    <button data-filter="lifestyle">Lifestyle</button>
+  </div>
+  <div class="subfilters" style="display:none;" id="video-subfilters"></div>
+  <div class="grid" id="video-gallery">
+    <!-- Vídeos -->
+    <div class="card" data-category="curtos" data-subcategory="curtos">
+      <iframe src="https://player.vimeo.com/video/1123887400" allowfullscreen></iframe>
+      <div class="tag">Vídeo Curto</div>
+    </div>
+    <div class="card" data-category="promocao" data-subcategory="promocao">
+      <iframe src="https://player.vimeo.com/video/22439234" allowfullscreen></iframe>
+      <div class="tag">Promoção</div>
+    </div>
+    <div class="card" data-category="lifestyle" data-subcategory="lifestyle">
+      <iframe src="https://player.vimeo.com/video/76979871" allowfullscreen></iframe>
+      <div class="tag">Lifestyle</div>
+    </div>
+  </div>
+</section>
 
-        <!-- Retrato -->
-        <div class="card" data-category="retrato" data-subcategory="cerimonia">
-          <img src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?q=80&w=1200&auto=format&fit=crop">
-          <div class="tag">Cerimônia</div>
-        </div>
-        <div class="card" data-category="retrato" data-subcategory="festa">
-          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop">
-          <div class="tag">Festa</div>
-        </div>
-        <div class="card" data-category="retrato" data-subcategory="ensaios">
-          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop">
-          <div class="tag">Ensaios</div>
-        </div>
-
-        <!-- Natureza -->
-        <div class="card" data-category="natureza" data-subcategory="cerimonia">
-          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop">
-          <div class="tag">Cerimônia</div>
-        </div>
-        <div class="card" data-category="natureza" data-subcategory="festa">
-          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop">
-          <div class="tag">Festa</div>
-        </div>
-        <div class="card" data-category="natureza" data-subcategory="ensaios">
-          <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?q=80&w=1200&auto=format&fit=crop">
-          <div class="tag">Ensaios</div>
-        </div>
-
-        <!-- Vídeos -->
-        <div class="card" data-category="video" data-subcategory="curtos">
-          <iframe src="https://player.vimeo.com/video/1123887400" allowfullscreen></iframe>
-          <div class="tag">Vídeo Curto</div>
-        </div>
-        <div class="card" data-category="video" data-subcategory="promocao">
-          <iframe src="https://player.vimeo.com/video/22439234" allowfullscreen></iframe>
-          <div class="tag">Promoção</div>
-        </div>
-        <div class="card" data-category="video" data-subcategory="lifestyle">
-          <iframe src="https://player.vimeo.com/video/76979871" allowfullscreen></iframe>
-          <div class="tag">Lifestyle</div>
-        </div>
-      </div>
-    </section>
-  </main>
 
   <section id="contato">
   <h2 style="text-align:center;">Contato</h2>
@@ -303,11 +294,74 @@
         navUl.style.boxShadow='0 8px 30px rgba(0,0,0,0.08)';
       } else {navUl.style.display='none';}
     });
-    
+
     // Impede o clique no e-mail de abrir algo
 document.getElementById('emailContato').addEventListener('click', function(e){
   e.preventDefault();
 });
+
+function setupGallery(galleryId, filterButtonsId, subfiltersId) {
+  const gallery = document.getElementById(galleryId);
+  const buttons = document.querySelectorAll(`#${filterButtonsId} button`);
+  const subfiltersContainer = document.getElementById(subfiltersId);
+  let cards = gallery.querySelectorAll('.card');
+
+  function createSubfilters(filter) {
+    subfiltersContainer.innerHTML = '';
+    let subs = [...new Set([...cards].filter(c => c.dataset.category === filter).map(c => c.dataset.subcategory))];
+    subs.forEach((sub, i) => {
+      let btn = document.createElement('button');
+      btn.textContent = sub.charAt(0).toUpperCase() + sub.slice(1);
+      btn.dataset.subfilter = sub;
+      if (i === 0) btn.classList.add('active');
+      btn.addEventListener('click', () => {
+        subfiltersContainer.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        showCards(filter, sub);
+      });
+      subfiltersContainer.appendChild(btn);
+    });
+  }
+
+  function showCards(filter, subfilter='all') {
+    cards.forEach((card, i) => {
+      card.classList.remove('show');
+      if (filter === 'all' || card.dataset.category === filter) {
+        if (filter !== 'all' && subfilter !== 'all') {
+          if (card.dataset.subcategory === subfilter) {
+            card.style.display = 'block';
+            setTimeout(() => card.classList.add('show'), i * 100);
+          } else card.style.display = 'none';
+        } else {
+          card.style.display = 'block';
+          setTimeout(() => card.classList.add('show'), i * 100);
+        }
+      } else card.style.display = 'none';
+    });
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      if (!filter.startsWith('all')) {
+        createSubfilters(filter);
+        subfiltersContainer.style.display = 'flex';
+        subfiltersContainer.querySelector('button').click();
+      } else {
+        subfiltersContainer.style.display = 'none';
+        showCards('all');
+      }
+    });
+  });
+
+  showCards('all');
+}
+
+// Inicializa galerias separadas
+setupGallery('photo-gallery', 'photo-filters', 'photo-subfilters');
+setupGallery('video-gallery', 'video-filters', 'video-subfilters');
 
   </script>
 </body>
