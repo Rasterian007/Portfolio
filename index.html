@@ -42,10 +42,10 @@
     h2{font-size:22px;margin:0 0 18px}
     .muted{color:var(--muted)}
 
-    .filters{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap}
-    .filters button{border:1px solid #eee;background:white;padding:8px 12px;border-radius:999px;cursor:pointer;transition:.3s}
-    .filters button:hover{background:var(--accent);color:white}
-    .filters button.active{background:var(--accent);color:white}
+    .filters, .subfilters{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;justify-content:center}
+    .filters button, .subfilters button{border:1px solid #eee;background:white;padding:8px 12px;border-radius:999px;cursor:pointer;transition:.3s}
+    .filters button:hover, .subfilters button:hover{background:var(--accent);color:white}
+    .filters button.active, .subfilters button.active{background:var(--accent);color:white}
 
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;transition:opacity .4s ease}
     .card{position:relative;overflow:hidden;border-radius:10px;cursor:pointer;opacity:0;transform:translateY(20px);transition:all .6s ease}
@@ -121,26 +121,99 @@
         <button data-filter="video">Vídeos</button>
       </div>
 
-      <div class="grid" id="gallery">
-        <!-- Vídeos -->
-        <div class="card" data-category="video"><iframe src="https://player.vimeo.com/video/1123887400" allow="autoplay; fullscreen" allowfullscreen></iframe><div class="tag">Vídeo</div></div>
-        <div class="card" data-category="video"><iframe src="https://player.vimeo.com/video/22439234" allow="autoplay; fullscreen" allowfullscreen></iframe><div class="tag">Vídeo</div></div>
+      <div class="subfilters" style="display:none;"></div>
 
+      <div class="grid" id="gallery">
         <!-- Casamento -->
-        <div class="card" data-category="casamento"><img src="https://i.ibb.co/rRwhhT1g/Adalberto-Banner.png" alt=""><div class="tag">Casamento</div></div>
-        <div class="card" data-category="casamento"><img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=1200&auto=format&fit=crop" alt=""><div class="tag">Casamento</div></div>
-        <div class="card" data-category="casamento"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop" alt=""><div class="tag">Casamento</div></div>
+        <div class="card" data-category="casamento" data-subcategory="cerimonia">
+          <img src="https://i.ibb.co/rRwhhT1g/Adalberto-Banner.png">
+          <div class="tag">Cerimônia</div>
+        </div>
+        <div class="card" data-category="casamento" data-subcategory="festa">
+          <img src="https://images.unsplash.com/photo-1517849845537-be9c29b29330?q=80&w=1200&auto=format&fit=crop">
+          <div class="tag">Festa</div>
+        </div>
+        <div class="card" data-category="casamento" data-subcategory="ensaios">
+          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop">
+          <div class="tag">Ensaios</div>
+        </div>
 
         <!-- Retrato -->
-        <div class="card" data-category="retrato"><img src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?q=80&w=1200&auto=format&fit=crop" alt=""><div class="tag">Retrato</div></div>
-        <div class="card" data-category="retrato"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop" alt=""><div class="tag">Retrato</div></div>
+        <div class="card" data-category="retrato" data-subcategory="cerimonia">
+          <img src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?q=80&w=1200&auto=format&fit=crop">
+          <div class="tag">Cerimônia</div>
+        </div>
+        <div class="card" data-category="retrato" data-subcategory="festa">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop">
+          <div class="tag">Festa</div>
+        </div>
+        <div class="card" data-category="retrato" data-subcategory="ensaios">
+          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop">
+          <div class="tag">Ensaios</div>
+        </div>
 
         <!-- Natureza -->
-        <div class="card" data-category="natureza"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop" alt=""><div class="tag">Natureza</div></div>
-        <div class="card" data-category="natureza"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop" alt=""><div class="tag">Natureza</div></div>
+        <div class="card" data-category="natureza" data-subcategory="cerimonia">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop">
+          <div class="tag">Cerimônia</div>
+        </div>
+        <div class="card" data-category="natureza" data-subcategory="festa">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop">
+          <div class="tag">Festa</div>
+        </div>
+        <div class="card" data-category="natureza" data-subcategory="ensaios">
+          <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?q=80&w=1200&auto=format&fit=crop">
+          <div class="tag">Ensaios</div>
+        </div>
+
+        <!-- Vídeos -->
+        <div class="card" data-category="video" data-subcategory="curtos">
+          <iframe src="https://player.vimeo.com/video/1123887400" allowfullscreen></iframe>
+          <div class="tag">Vídeo Curto</div>
+        </div>
+        <div class="card" data-category="video" data-subcategory="promocao">
+          <iframe src="https://player.vimeo.com/video/22439234" allowfullscreen></iframe>
+          <div class="tag">Promoção</div>
+        </div>
+        <div class="card" data-category="video" data-subcategory="lifestyle">
+          <iframe src="https://player.vimeo.com/video/76979871" allowfullscreen></iframe>
+          <div class="tag">Lifestyle</div>
+        </div>
       </div>
     </section>
   </main>
+
+  <section id="contato">
+  <h2 style="text-align:center;">Contato</h2>
+  <div style="display:flex;gap:40px;flex-wrap:wrap;align-items:flex-start;justify-content:center;max-width:900px;margin:0 auto">
+    
+    <!-- Formulário -->
+    <form style="flex:1;min-width:280px;display:flex;flex-direction:column;gap:14px">
+      <input type="text" placeholder="Nome" style="padding:12px;border:1px solid #ddd;border-radius:8px;font-size:16px">
+      <input type="email" placeholder="E-mail" style="padding:12px;border:1px solid #ddd;border-radius:8px;font-size:16px">
+      <input type="tel" placeholder="Número" style="padding:12px;border:1px solid #ddd;border-radius:8px;font-size:16px">
+      <button type="button" style="padding:12px;background:var(--accent);color:white;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:16px">
+        Enviar
+      </button>
+    </form>
+
+    <!-- Informações de contato -->
+    <div style="flex:1;min-width:220px;display:flex;flex-direction:column;gap:12px">
+      <p class="muted">Entre em contato comigo através do e-mail ou Instagram:</p>
+      <p style="display:flex;align-items:center;gap:8px">
+        <i class="fas fa-envelope"></i>
+        <a href="mailto:joao.silva@email.com">alefferreira391@gmail.com</a>
+      </p>
+      <p style="display:flex;align-items:center;gap:8px">
+        <i class="fab fa-instagram"></i>
+        <a href="https://www.instagram.com/conhecimento_360_/" target="_blank">@MeuInstagram
+</a>
+      </p>
+    </div>
+
+  </div>
+</section>
+
 
   <footer>
     <p>© 2025 João Silva — Todos os direitos reservados</p>
@@ -149,7 +222,7 @@
   <button id="toTop" class="to-top" title="Voltar ao topo">↑</button>
 
   <script>
-    // Scroll suave nos links
+    // Scroll suave
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click',function(e){
         const href=this.getAttribute('href');
@@ -160,36 +233,65 @@
       });
     });
 
-    // Filtro com animações suaves
-    const buttons = document.querySelectorAll('.filters button');
-    const cards = document.querySelectorAll('#gallery .card');
-    const gallery = document.getElementById('gallery');
+    const buttons=document.querySelectorAll('.filters button');
+    const subfiltersContainer=document.querySelector('.subfilters');
+    let cards=document.querySelectorAll('#gallery .card');
 
+    function createSubfilters(filter){
+      subfiltersContainer.innerHTML='';
+      let subs=[...new Set([...cards].filter(c=>c.dataset.category===filter).map(c=>c.dataset.subcategory))];
+      subs.forEach((sub,i)=>{
+        let btn=document.createElement('button');
+        btn.textContent=sub.charAt(0).toUpperCase()+sub.slice(1);
+        btn.dataset.subfilter=sub;
+        if(i===0) btn.classList.add('active');
+        btn.addEventListener('click',()=>{
+          document.querySelectorAll('.subfilters button').forEach(b=>b.classList.remove('active'));
+          btn.classList.add('active');
+          showCards(filter,sub);
+        });
+        subfiltersContainer.appendChild(btn);
+      });
+    }
+
+    function showCards(filter,subfilter='all'){
+      cards.forEach((card,i)=>{
+        card.classList.remove('show');
+        if(filter==='all' || card.dataset.category===filter){
+          if(filter!=='all' && subfilter!=='all'){
+            if(card.dataset.subcategory===subfilter){
+              card.style.display='block';
+              setTimeout(()=>card.classList.add('show'),i*100);
+            }else card.style.display='none';
+          }else{
+            card.style.display='block';
+            setTimeout(()=>card.classList.add('show'),i*100);
+          }
+        }else card.style.display='none';
+      });
+    }
+
+    // Filtro principal
     buttons.forEach(btn=>{
       btn.addEventListener('click',()=>{
         buttons.forEach(b=>b.classList.remove('active'));
         btn.classList.add('active');
-        const f = btn.dataset.filter;
-
-        // Fade-out geral
-        gallery.style.opacity = '0';
-        setTimeout(()=>{
-          cards.forEach((card,i)=>{
-            if(f==='all' || card.dataset.category===f){
-              card.style.display = 'block';
-              setTimeout(()=>card.classList.add('show'), i*100);
-            }else{
-              card.style.display = 'none';
-              card.classList.remove('show');
-            }
-          });
-          // Fade-in geral
-          setTimeout(()=>{gallery.style.opacity='1';},200);
-        },300);
+        const filter=btn.dataset.filter;
+        if(filter!=='all'){
+          createSubfilters(filter);
+          subfiltersContainer.style.display='flex';
+          subfiltersContainer.querySelector('button').click();
+        }else{
+          subfiltersContainer.style.display='none';
+          showCards('all');
+        }
       });
     });
 
-    // Botão voltar ao topo
+    // Inicial
+    showCards('all');
+
+    // Botão voltar topo
     const toTop=document.getElementById('toTop');
     window.addEventListener('scroll',()=>{window.scrollY>400?toTop.classList.add('show'):toTop.classList.remove('show');});
     toTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
@@ -199,17 +301,15 @@
     const navUl=document.querySelector('nav ul');
     menuBtn.addEventListener('click',()=>{
       if(getComputedStyle(navUl).display==='none'){
-        navUl.style.display='flex';navUl.style.flexDirection='column';navUl.style.background='white';
-        navUl.style.position='absolute';navUl.style.right='20px';navUl.style.top='68px';navUl.style.padding='12px';
+        navUl.style.display='flex';
+        navUl.style.flexDirection='column';
+        navUl.style.background='white';
+        navUl.style.position='absolute';
+        navUl.style.right='20px';
+        navUl.style.top='68px';
+        navUl.style.padding='12px';
         navUl.style.boxShadow='0 8px 30px rgba(0,0,0,0.08)';
       } else {navUl.style.display='none';}
-    });
-
-    // Animação inicial
-    window.addEventListener('load',()=>{
-      document.querySelectorAll('.card').forEach((card,i)=>{
-        setTimeout(()=>card.classList.add('show'),i*100);
-      });
     });
   </script>
 </body>
