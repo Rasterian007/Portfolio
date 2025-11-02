@@ -185,34 +185,26 @@
 
   <section id="contato">
   <h2 style="text-align:center;">Contato</h2>
-  <div style="display:flex;gap:40px;flex-wrap:wrap;align-items:flex-start;justify-content:center;max-width:900px;margin:0 auto">
-    
-    <!-- Formulário -->
-    <form style="flex:1;min-width:280px;display:flex;flex-direction:column;gap:14px">
-      <input type="text" placeholder="Nome" style="padding:12px;border:1px solid #ddd;border-radius:8px;font-size:16px">
-      <input type="email" placeholder="E-mail" style="padding:12px;border:1px solid #ddd;border-radius:8px;font-size:16px">
-      <input type="tel" placeholder="Número" style="padding:12px;border:1px solid #ddd;border-radius:8px;font-size:16px">
-      <button type="button" style="padding:12px;background:var(--accent);color:white;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:16px">
-        Enviar
-      </button>
-    </form>
+  <div style="display:flex;gap:40px;flex-wrap:wrap;align-items:center;justify-content:center;max-width:900px;margin:0 auto">
 
     <!-- Informações de contato -->
-    <div style="flex:1;min-width:220px;display:flex;flex-direction:column;gap:12px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;">
       <p class="muted">Entre em contato comigo através do e-mail ou Instagram:</p>
-      <p style="display:flex;align-items:center;gap:8px">
+
+      <p style="display:flex;align-items:center;gap:8px;justify-content:center;">
         <i class="fas fa-envelope"></i>
-        <a href="mailto:joao.silva@email.com">alefferreira391@gmail.com</a>
+        <a href="#" id="emailContato">alefferreira391@gmail.com</a>
       </p>
-      <p style="display:flex;align-items:center;gap:8px">
+
+      <p style="display:flex;align-items:center;gap:8px;justify-content:center;">
         <i class="fab fa-instagram"></i>
-        <a href="https://www.instagram.com/conhecimento_360_/" target="_blank">@MeuInstagram
-</a>
+        <a href="https://www.instagram.com/conhecimento_360_/" target="_blank">@MeuInstagram</a>
       </p>
     </div>
 
   </div>
 </section>
+
 
 
   <footer>
@@ -311,6 +303,12 @@
         navUl.style.boxShadow='0 8px 30px rgba(0,0,0,0.08)';
       } else {navUl.style.display='none';}
     });
+    
+    // Impede o clique no e-mail de abrir algo
+document.getElementById('emailContato').addEventListener('click', function(e){
+  e.preventDefault();
+});
+
   </script>
 </body>
 </html>
