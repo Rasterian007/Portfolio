@@ -159,7 +159,6 @@
     <button class="active" data-filter="all-videos">Todos</button>
     <button data-filter="Redes Sociais">Redes Sociais</button>
     <button data-filter="Vídeo de Produtos">Vídeo de Produtos</button>
-    <button data-filter="Eventos">Eventos</button>
   </div>
   <div class="subfilters" style="display:none;" id="video-subfilters"></div>
   
@@ -174,7 +173,7 @@
       <iframe src="https://player.vimeo.com/video/1123887400" allowfullscreen></iframe>
       <div class="tag">Reels</div>
     </div>
-    <div class="card" data-category="Vídeo de Produtos" data-subcategory="lifestyle">
+    <div class="card" data-category="Redes Sociais" data-subcategory="lifestyle">
       <iframe src="https://player.vimeo.com/video/76979871" allowfullscreen></iframe>
       <div class="tag">Lifestyle</div>
     </div>
@@ -388,5 +387,65 @@ setupGallery('photo-gallery', 'photo-filters', 'photo-subfilters');
 setupGallery('video-gallery', 'video-filters', 'video-subfilters');
 
   </script>
+  <!-- Adicione ao final do body, antes do </body> -->
+<div id="lightbox" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);justify-content:center;align-items:center;z-index:9999;">
+  <span id="lb-close" style="position:absolute;top:20px;right:30px;font-size:32px;color:white;cursor:pointer;">&times;</span>
+  <span id="lb-prev" style="position:absolute;top:50%;left:30px;font-size:48px;color:white;cursor:pointer;user-select:none;">&#10094;</span>
+  <span id="lb-next" style="position:absolute;top:50%;right:30px;font-size:48px;color:white;cursor:pointer;user-select:none;">&#10095;</span>
+  <img id="lb-img" src="" style="max-width:90%;max-height:90%;border-radius:12px;object-fit:contain;">
+</div>
+
+<script>
+  // Lightbox para fotos
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lb-img');
+  const lbClose = document.getElementById('lb-close');
+  const lbPrev = document.getElementById('lb-prev');
+  const lbNext = document.getElementById('lb-next');
+
+  let currentCategory = '';
+  let currentSubcategory = '';
+  let images = [];
+  let currentIndex = 0;
+
+  const photoCards = document.querySelectorAll('#photo-gallery .card img');
+
+  photoCards.forEach(card => {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', () => {
+      const parent = card.closest('.card');
+      currentCategory = parent.dataset.category;
+      currentSubcategory = parent.dataset.subcategory;
+      images = [...document.querySelectorAll(`#photo-gallery .card[data-category="${currentCategory}"][data-subcategory="${currentSubcategory}"] img`)];
+      currentIndex = images.indexOf(card);
+      lbImg.src = card.src;
+      lightbox.style.display = 'flex';
+    });
+  });
+
+  lbClose.addEventListener('click', () => { lightbox.style.display = 'none'; });
+
+  lbPrev.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    lbImg.src = images[currentIndex].src;
+  });
+
+  lbNext.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    lbImg.src = images[currentIndex].src;
+  });
+
+  // Fechar lightbox clicando fora da imagem
+  lightbox.addEventListener('click', e => { if(e.target===lightbox) lightbox.style.display='none'; });
+
+  // Navegação com teclado
+  document.addEventListener('keydown', e => {
+    if(lightbox.style.display==='flex'){
+      if(e.key==='ArrowRight'){ lbNext.click(); }
+      if(e.key==='ArrowLeft'){ lbPrev.click(); }
+      if(e.key==='Escape'){ lbClose.click(); }
+    }
+  });
+</script>
 </body>
 </html>
