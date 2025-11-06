@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
+  
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CineSertão — Fotógrafo Profissional</title>
@@ -9,8 +10,63 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
   <style>
+    /* Transição suave e efeito pop do ícone de tema */
+#themeToggle {
+  transition: color 0.8s ease, transform 0.4s ease;
+}
+#themeToggle:active {
+  transform: scale(2.5);
+}
+
+    /* Transição suave para tema claro/escuro */
+body, header, nav a, .cta, .filters button, .subfilters button, input, textarea, .card, footer {
+  transition: background 0.8s ease, color 0.8s ease, box-shadow 0.8s ease, border-color 0.8s ease;
+}
+
+  /* Glow pulsante padrão (tema claro) */
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all .6s ease;
+
+  box-shadow: 0 15px 25px rgba(0,0,0,0.3),
+              0 0 20px rgba(0, 0, 0, 0.5),
+              0 0 40px rgba(0, 0, 0, 0.3);
+  animation: glowPulse 3s infinite alternate;
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.02);
+}
+
+/* Glow pulsante para tema escuro */
+body.dark .card {
+  box-shadow: 0 15px 25px rgba(0,0,0,0.6),
+              0 0 20px rgba(0, 200, 255, 0.6),
+              0 0 40px rgba(0, 200, 255, 0.4);
+  animation: glowPulseDark 3s infinite alternate;
+}
+
+/* Keyframes para glow tema claro */
+@keyframes glowPulse {
+  0% { box-shadow: 0 15px 25px rgba(0,0,0,0.3), 0 0 20px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.2); }
+  50% { box-shadow: 0 20px 30px rgba(0,0,0,0.4), 0 0 25px rgba(0, 0, 0, 0.5), 0 0 50px rgba(0, 0, 0, 0.3); }
+  100% { box-shadow: 0 15px 25px rgba(0,0,0,0.3), 0 0 20px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.2); }
+}
+
+/* Keyframes para glow tema escuro */
+@keyframes glowPulseDark {
+  0% { box-shadow: 0 15px 25px rgba(0,0,0,0.6), 0 0 20px rgba(0,200,255,0.4), 0 0 40px rgba(0,200,255,0.2); }
+  50% { box-shadow: 0 20px 30px rgba(0,0,0,0.7), 0 0 25px rgba(0,200,255,0.6), 0 0 50px rgba(0,200,255,0.4); }
+  100% { box-shadow: 0 15px 25px rgba(0,0,0,0.6), 0 0 20px rgba(0,200,255,0.4), 0 0 40px rgba(0,200,255,0.2); }
+}
+
     :root{
-      --bg:#ffffff;
+      --bg:#ece8e8;
       --text:#7E5A46;
       --accent:#7E5A46;
       --muted:#6b7280;
@@ -18,6 +74,7 @@
       --radius:12px;
       font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     }
+    
     *{box-sizing:border-box}
     html{scroll-behavior:smooth;}
     body{margin:0;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.6;}
@@ -25,7 +82,7 @@
     img{max-width:100%;display:block}
     .container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
 
-    header{position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-bottom:1px solid #eee;z-index:50;transition:.3s;}
+    header{position:sticky;top:0;background:rgba(255, 255, 255, 0.95);backdrop-filter:blur(10px);border-bottom:1px solid #eee;z-index:50;transition:.3s;}
     .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
     .brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:18px}
     .brand img{height:44px;border-radius:8px}
@@ -81,6 +138,45 @@
     input:focus,textarea:focus{border-color:var(--accent);}
     button[type=submit]{background:var(--accent);color:white;padding:12px;border:none;border-radius:8px;font-weight:700;cursor:pointer;transition:.3s}
     button[type=submit]:hover{background:#d97706;}
+    /* Tema escuro */
+body.dark {
+  background:#0b0b0b;
+  color:#e5e5e5;
+}
+body.dark header{
+  background:rgba(20, 20, 20, 0.9);
+  border-bottom:1px solid rgba(255,255,255,0.1);
+}
+body.dark nav a{color:#ffffff;}
+body.dark nav a:hover{color:#d97706;}
+body.dark .filters button,
+body.dark .subfilters button{
+  border:1px solid rgba(255,255,255,0.2);
+  background:rgba(255,255,255,0.05);
+  color:#f5f5f5;
+}
+body.dark .filters button:hover,
+body.dark .subfilters button:hover,
+body.dark .filters button.active,
+body.dark .subfilters button.active{
+  background:#d97706;
+  color:white;
+}
+body.dark .card{box-shadow:0 6px 20px rgba(0,0,0,0.6);}
+body.dark footer{
+  background:rgba(0,0,0,0.8);
+  border-top:1px solid rgba(255,255,255,0.1);
+  color:#ccc;
+}
+body.dark input,body.dark textarea{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.2);
+  color:white;
+}
+body.dark input:focus,body.dark textarea:focus{
+  border-color:#d97706;
+}
+
   </style>
 </head>
 <body>
@@ -89,28 +185,35 @@
   <div class="container nav">
     <div class="brand">
       <img src="https://i.ibb.co/MDSMkYqX/Gemini-Generated-Image-2hwsc12hwsc12hws.png" alt="Logo CineSertão" style="height:60px;border-radius:12px;">
-      <span>CineSertão </span>
+      <span>CineSertão</span>
     </div>
-    <nav>
-  <button class="menu-btn" aria-label="menu">☰</button>
-  <ul>
-    <li><a href="#home">Início</a></li>
-    <li><a href="#about">Sobre</a></li>
-    <li><a href="#portfolio">Portfólio</a></li>
-    <li><a href="#contato">Contato</a></li>
-    <li>
-      <a href="https://www.youtube.com/@SEU_CANAL" target="_blank"  
-   class="cta" style="background:#FF0000;"> <!--Youtube-->
-   <i class="fab fa-youtube"></i> YouTube
-</a>
-    </li>
-  </ul>
-</nav>
 
+    <nav>
+      <button class="menu-btn" aria-label="menu">☰</button>
+      <ul>
+        <li><a href="#home">Início</a></li>
+        <li><a href="#about">Sobre</a></li>
+        <li><a href="#portfolio">Portfólio</a></li>
+        <li><a href="#contato">Contato</a></li>
+        <li>
+          <a href="https://www.youtube.com/@SEU_CANAL" target="_blank" class="cta" style="background:#FF0000;">
+            <i class="fab fa-youtube"></i> YouTube
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- 🔘 Botão de alternar tema -->
+    <button id="themeToggle" title="Alternar tema" 
+      style="border:none;background:none;font-size:20px;color:var(--text);cursor:pointer;margin-left:15px;">
+      🔆
+      
+    </button>
 
     <a class="cta" href="#contato">Agendar Sessão</a>
   </div>
 </header>
+
 
 
 <main class="container">
@@ -299,8 +402,43 @@ function setupGallery(galleryId, filterButtonsId, subfiltersId) {
   });
   showCards('all');
 }
-setupGallery('photo-gallery', 'photo-filters', 'photo-subfilters');
-setupGallery('video-gallery', 'video-filters', 'video-subfilters');
+function showCards(filter, subfilter='all') {
+  cards.forEach(card => {
+    card.classList.remove('show'); // remove animação anterior
+    card.style.display = 'none';
+  });
+
+  const visibleCards = [...cards].filter(card => {
+    if (filter === 'all' || card.dataset.category === filter) {
+      if (filter !== 'all' && subfilter !== 'all') {
+        return card.dataset.subcategory === subfilter;
+      }
+      return true;
+    }
+    return false;
+  });
+
+  // Função para animar quando entra na tela
+  function animateCards() {
+    const triggerBottom = window.innerHeight * 0.9;
+    visibleCards.forEach((card, index) => {
+      const cardTop = card.getBoundingClientRect().top;
+      if (cardTop < triggerBottom) {
+        setTimeout(() => card.classList.add('show'), index * 150);
+      }
+    });
+  }
+
+  // Mostra os cards
+  visibleCards.forEach(card => card.style.display = 'block');
+
+  // Anima inicialmente
+  animateCards();
+
+  // Anima novamente ao rolar
+  window.addEventListener('scroll', animateCards);
+}
+
 
 // Voltar ao topo
 const toTop=document.getElementById('toTop');
@@ -383,5 +521,51 @@ document.addEventListener('keydown', e => {
   }
 });
 </script>
+<script>
+// Alternar tema claro/escuro
+const themeBtn = document.getElementById('themeToggle');
+const currentTheme = localStorage.getItem('theme');
+
+if (currentTheme === 'dark') {
+  document.body.classList.add('dark');
+  themeBtn.textContent = '🌙';
+}
+
+themeBtn.addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+  const isDark = document.body.classList.contains('dark');
+  themeBtn.textContent = isDark ? '🌙' : '🔆';
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+});
+</script>
+<script>
+// Função para animar cards quando entram na tela
+function animateOnScroll(gallerySelector) {
+  const gallery = document.querySelector(gallerySelector);
+  const cards = gallery.querySelectorAll('.card');
+
+  function checkPosition() {
+    const triggerBottom = window.innerHeight * 0.9;
+
+    cards.forEach((card, index) => {
+      const cardTop = card.getBoundingClientRect().top;
+
+      if (cardTop < triggerBottom && !card.classList.contains('show')) {
+        setTimeout(() => {
+          card.classList.add('show');
+        }, index * 150); // 150ms de delay entre os cards
+      }
+    });
+  }
+
+  window.addEventListener('scroll', checkPosition);
+  window.addEventListener('load', checkPosition);
+}
+
+// Aplica nas duas galerias
+animateOnScroll('#photo-gallery');
+animateOnScroll('#video-gallery');
+</script>
+
 </body>
 </html>
